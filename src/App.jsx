@@ -5,7 +5,6 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import Courses from './pages/Courses'
-import Admin from './pages/Admin'
 
 export default function App() {
   return (
@@ -17,7 +16,6 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/courses" element={<Courses />} />
       </Route>
-      <Route path="/admin/*" element={<Admin />} />
     </Routes>
   )
 }
