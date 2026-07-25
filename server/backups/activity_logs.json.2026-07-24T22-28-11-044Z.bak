@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "user": "admin",
+    "userName": "Administrador Principal",
+    "role": "admin",
+    "action": "LOGIN",
+    "detail": "Inicio de sesión exitoso",
+    "timestamp": "2026-07-24T21:03:32.168Z"
+  },
+  {
+    "id": 2,
+    "user": "admin",
+    "userName": "Administrador Principal",
+    "role": "admin",
+    "action": "LOGIN",
+    "detail": "Inicio de sesión exitoso",
+    "timestamp": "2026-07-24T21:06:48.042Z"
+  },
+  {
+    "id": 3,
+    "user": "anonymous",
+    "userName": "Anónimo",
+    "role": "public",
+    "action": "REGISTRATION",
+    "detail": "Test User se inscribió en Taller de Huerta Familiar",
+    "timestamp": "2026-07-24T21:06:48.064Z"
+  },
+  {
+    "id": 4,
+    "user": "admin",
+    "userName": "Administrador Principal",
+    "role": "admin",
+    "action": "LOGIN",
+    "detail": "Inicio de sesión exitoso",
+    "timestamp": "2026-07-24T22:28:10.922Z"
+  }
+]

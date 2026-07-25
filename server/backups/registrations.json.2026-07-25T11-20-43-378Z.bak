@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "courseId": 1,
+    "courseName": "Taller de Huerta Familiar",
+    "name": "Test User",
+    "email": "test@test.com",
+    "phone": "",
+    "message": "",
+    "status": "pendiente",
+    "createdAt": "2026-07-24T21:06:48.063Z"
+  }
+]
