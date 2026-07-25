@@ -3,6 +3,7 @@ import cors from 'cors'
 import authRoutes from './routes/auth.js'
 import registrationRoutes from './routes/registrations.js'
 import salesRoutes from './routes/sales.js'
+import contactRoutes from './routes/contact.js'
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -13,6 +14,7 @@ app.use(express.json())
 app.use('/api/auth', authRoutes)
 app.use('/api', registrationRoutes)
 app.use('/api/sales', salesRoutes)
+app.use('/api', contactRoutes)
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
 

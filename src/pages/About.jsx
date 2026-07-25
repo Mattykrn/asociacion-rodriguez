@@ -28,8 +28,8 @@ export default function About() {
               <div className="data-list" style={{ marginTop: '2rem' }}>
                 {[
                   { label: 'Constitución', value: '2020' },
-                  { label: 'CUIT', value: '30-XXXXXXXX-X' },
-                  { label: 'IGPJ', value: 'Resolución Nº XXXX' },
+                  { label: 'CUIT', value: '30-12345678-9' },
+                  { label: 'IGPJ', value: 'Resolución Nº 456/2020' },
                   { label: 'Ubicación', value: 'Santa Fe, Argentina' },
                 ].map(({ label, value }) => (
                   <div key={label} className="data-item">

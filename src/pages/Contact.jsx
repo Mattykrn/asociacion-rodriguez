@@ -1,6 +1,36 @@
+import { useState } from 'react'
 import ContactInfo from '../components/ContactInfo'
 
 export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
+
+  const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setError('')
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError('Nombre, email y mensaje son obligatorios')
+      return
+    }
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Error al enviar')
+      setStatus('success')
+      setForm({ name: '', email: '', phone: '', message: '' })
+    } catch {
+      setError('Error de conexión. Intentalo de nuevo.')
+      setStatus('idle')
+    }
+  }
+
   return (
     <>
       <section className="page-hero">
@@ -20,28 +50,42 @@ export default function Contact() {
               <div className="accent-line" />
               <h2 className="section-title">Formulario de contacto</h2>
               <p className="section-subtitle">Dejanos tu mensaje y te responderemos a la brevedad.</p>
-              <form onSubmit={e => e.preventDefault()}>
-                <div className="form-group">
-                  <label htmlFor="name">Nombre completo</label>
-                  <input type="text" id="name" placeholder="Tu nombre" />
+
+              {status === 'success' ? (
+                <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
+                  <div style={{ width: '3rem', height: '3rem', borderRadius: '50%', background: 'rgba(37,211,102,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                  </div>
+                  <h3 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Mensaje enviado</h3>
+                  <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Te responderemos a la brevedad.</p>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="email">Correo electrónico</label>
-                  <input type="email" id="email" placeholder="tu@correo.com" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="phone">Teléfono (opcional)</label>
-                  <input type="tel" id="phone" placeholder="+54 342 ..." />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="message">Mensaje</label>
-                  <textarea id="message" placeholder="Escribí tu mensaje aquí..." />
-                </div>
-                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                  Enviar mensaje
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  {error && (
+                    <div style={{ padding: '0.75rem 1rem', borderRadius: 'var(--radius)', background: 'rgba(220,38,38,0.08)', color: '#DC2626', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</div>
+                  )}
+                  <div className="form-group">
+                    <label htmlFor="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" value={form.name} onChange={handleChange} placeholder="Tu nombre" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" value={form.email} onChange={handleChange} placeholder="tu@correo.com" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">Teléfono (opcional)</label>
+                    <input type="tel" id="phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+54 342 ..." />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="message">Mensaje</label>
+                    <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Escribí tu mensaje aquí..." />
+                  </div>
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={status === 'loading'}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    {status === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
+                  </button>
+                </form>
+              )}
             </div>
             <div>
               <div className="tag">Respuesta Rápida</div>

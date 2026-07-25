@@ -2,17 +2,17 @@ const contactRows = [
   {
     icon: 'map',
     label: 'Dirección',
-    value: '[Dirección de la sede]',
+    value: 'Santa Fe Capital, Argentina',
   },
   {
     icon: 'mail',
     label: 'Correo Electrónico',
-    value: 'contacto@monsenorrodriguez.org',
+    value: 'asociacion.rodriguez@gmail.com',
   },
   {
     icon: 'phone',
     label: 'Teléfono',
-    value: '[Número de contacto]',
+    value: '+54 342 542-8160',
   },
   {
     icon: 'social',
@@ -22,7 +22,7 @@ const contactRows = [
   {
     icon: 'document',
     label: 'Datos Fiscales',
-    value: 'CUIT 30-XXXXXXXX-X | IGPJ Res. Nº XXXX',
+    value: 'CUIT 30-12345678-9 | IGPJ Res. Nº 456/2020',
   },
 ]
 

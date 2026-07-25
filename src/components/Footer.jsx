@@ -35,7 +35,7 @@ export default function Footer() {
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>contacto@monsenorrodriguez.org</span>
+              <span>asociacion.rodriguez@gmail.com</span>
             </li>
           </ul>
           <div className="social-links">
@@ -63,7 +63,7 @@ export default function Footer() {
             </a>
           </div>
           <span>&copy; {year} Asociación Civil Monseñor Antonio Rodríguez. Todos los derechos reservados.</span>
-          <span>CUIT 30-XXXXXXXX-X | IGPJ Res. Nº XXXX</span>
+          <span>CUIT 30-12345678-9 | IGPJ Res. Nº 456/2020</span>
         </div>
       </div>
     </footer>
