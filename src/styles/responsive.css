@@ -1,5 +1,6 @@
 @media (max-width: 1024px) {
   .container { padding: 0 1.25rem; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
 }

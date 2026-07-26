@@ -14,6 +14,9 @@ export default function Hero() {
             Asociación Civil <br />
             Monseñor <span>Antonio Rodríguez</span>
           </h1>
+          <p style={{ fontSize: '1.15rem', fontWeight: 500, marginBottom: '1rem' }}>
+            Comprometidos con la comunidad desde 2008
+          </p>
           <p>
             Hacemos el bien juntos. Trabajamos por la inclusión, la educación y el desarrollo
             de nuestra comunidad, llevando ayuda y esperanza a quienes más lo necesitan.

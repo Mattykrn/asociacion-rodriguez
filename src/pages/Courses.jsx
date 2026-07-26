@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import coursesData from '../data/courses.json'
 import CourseCard from '../components/CourseCard'
 import RegistrationForm from '../components/RegistrationForm'
 
 export default function Courses() {
-  const [selectedCourse, setSelectedCourse] = useState(null)
-
   return (
     <>
       <section className="page-hero">

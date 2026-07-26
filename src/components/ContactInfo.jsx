@@ -7,7 +7,7 @@ const contactRows = [
   {
     icon: 'mail',
     label: 'Correo Electrónico',
-    value: 'asociacion.rodriguez@gmail.com',
+    value: 'monsenorantoniorodriguez@gmail.com',
   },
   {
     icon: 'phone',
