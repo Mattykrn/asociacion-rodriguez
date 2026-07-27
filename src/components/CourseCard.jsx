@@ -7,7 +7,7 @@ export default function CourseCard({ course, onRegister }) {
     <div className="card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
       <div style={{
         width: '3rem', height: '3rem', borderRadius: 'var(--radius)',
-        background: 'rgba(43, 95, 138, 0.08)',
+        background: 'rgba(30, 58, 138, 0.1)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         marginBottom: '1rem', color: 'var(--primary)',
       }}>

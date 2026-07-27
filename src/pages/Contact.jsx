@@ -25,7 +25,7 @@ export default function Contact() {
       <section className="page-hero">
         <div className="container">
           <h1>Contacto</h1>
-          <p>Estamos a tu disposición. Comunicate con nosotros por cualquier vía.</p>
+          <p>Si estás buscando ayuda, un oficio o simplemente querés saber más, este es el lugar.</p>
         </div>
       </section>
 

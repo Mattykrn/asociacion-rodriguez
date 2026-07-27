@@ -14,7 +14,7 @@ export default function Footer() {
               <span>Asociación Civil</span>
             </div>
           </div>
-          <p>Trabajando por el bienestar y desarrollo de nuestra comunidad en Santa Fe, Argentina.</p>
+          <p>Acompañamos a jóvenes y adultos en situación de vulnerabilidad con formación laboral, contención y una segunda oportunidad. Santa Fe, Argentina.</p>
         </div>
         <div>
           <h4>Enlaces</h4>
