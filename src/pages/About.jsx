@@ -16,7 +16,7 @@ export default function About() {
               <div className="accent-line" />
               <h2 className="section-title">Nacimos para dar una segunda oportunidad</h2>
               <p style={{ color: 'var(--text-light)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                La Asociación Civil Monseñor Antonio Rodríguez fue fundada el 4 de marzo de 2008
+                La Asociación Civil Monseñor Antonio Rodríguez fue constituida legalmente el 15 de junio de 2010
                 por un grupo de ciudadanos de Santa Fe que entendieron que la falta de oportunidades
                 y la exclusión no se combaten con indiferencia. Se combaten con oficio, con
                 contención y con oportunidad.
@@ -32,9 +32,9 @@ export default function About() {
               </p>
               <div className="data-list" style={{ marginTop: '2rem' }}>
                 {[
-                  { label: 'Fundación', value: '4 de marzo de 2008' },
-                  { label: 'CUIT', value: '30-12345678-9' },
-                  { label: 'IGPJ', value: 'Resolución Nº 456/2020' },
+                  { label: 'Constitución', value: '15 de junio de 2010' },
+                  { label: 'CUIT', value: '30-71164449-7' },
+                  { label: 'IGPJ', value: 'Resolución Nº 406' },
                   { label: 'Ubicación', value: 'Santa Fe, Argentina' },
                 ].map(({ label, value }) => (
                   <div key={label} className="data-item">

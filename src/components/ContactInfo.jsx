@@ -37,7 +37,7 @@ const contactRows = [
   {
     icon: 'map',
     label: 'Dirección',
-    value: 'Santa Fe Capital, Argentina',
+    value: 'Teniente Loza 6093, Santa Fe',
   },
   {
     icon: 'mail',
@@ -57,7 +57,7 @@ const contactRows = [
   {
     icon: 'document',
     label: 'Datos Fiscales',
-    value: 'CUIT 30-12345678-9 | IGPJ Res. Nº 456/2020',
+    value: 'CUIT 30-71164449-7 | IGPJ Res. Nº 406',
   },
 ]
 

@@ -5,6 +5,7 @@ const links = [
   { to: '/', label: 'Inicio' },
   { to: '/about', label: 'Nosotros' },
   { to: '/courses', label: 'Talleres' },
+  { to: '/herreria', label: 'Herrería' },
   { to: '/gallery', label: 'Galería' },
   { to: '/contact', label: 'Contacto' },
 ]

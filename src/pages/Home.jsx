@@ -13,7 +13,7 @@ export default function Home() {
               { num: '+200', label: 'Jóvenes acompañados' },
               { num: '85%', label: 'Consiguió trabajo o volvió a estudiar' },
               { num: '5', label: 'Talleres de formación activos' },
-              { num: '2008', label: 'Fundación' },
+              { num: '2010', label: 'Constitución' },
             ].map(({ num, label }) => (
               <div key={label} style={{ padding: '1.5rem' }}>
                 <div style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, lineHeight: 1, marginBottom: '0.5rem', color: 'var(--gold-light)' }}>
@@ -74,6 +74,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Herrería Profesional */}
+      <section className="section" style={{ background: 'var(--bg-alt)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div className="tag">Herrería Profesional</div>
+            <div className="accent-line centered" />
+            <h2 className="section-title">Trabajos en hierro a medida</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Además de formar en el oficio, producimos y vendemos estructuras de hierro de calidad.
+              Rejas, portones, barandales, pintura y restauración. Presupuesto sin cargo.
+            </p>
+          </div>
+          <div className="grid-3">
+            {[
+              { icon: 'grid', title: 'Rejas y Portones', desc: 'Fabricación e instalación de rejas para ventanas, puertas y portones corredizos o batientes.' },
+              { icon: 'barandales', title: 'Barandales y Pasamanos', desc: 'Barandales para escaleras, balcones y terrazas. Diseños clásicos y modernos.' },
+              { icon: 'estructura', title: 'Estructuras Metálicas', desc: 'Techos, tinglados, pérgolas y soportes. Calculamos y fabricamos a medida.' },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="card" style={{ padding: '2rem', textAlign: 'center' }}>
+                <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: 'var(--radius)', background: 'rgba(196, 155, 74, 0.1)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+                  {icon === 'grid' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>}
+                  {icon === 'barandales' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 10 3 21"/><polyline points="21 10 21 21"/><line x1="3" y1="15" x2="21" y2="15"/></svg>}
+                  {icon === 'estructura' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>}
+                </div>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.5rem' }}>{title}</h3>
+                <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', lineHeight: 1.7 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+            <a href="/herreria" className="btn btn-gold" style={{ fontSize: '1.05rem' }}>
+              Ver todos los servicios de herrería
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonios */}
       <section className="section section-warm">
         <div className="container">
@@ -112,16 +150,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cómo ayudar / Contacto directo */}
+      {/* CTA doble: Capacitación + Herrería */}
       <section className="cta-section">
         <div className="container">
           <div className="tag" style={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)', color: 'var(--gold-light)' }}>
-            No estás solo
+            Estamos para ayudarte
           </div>
-          <h2>¿No encontrás trabajo? ¿Querés aprender un oficio y emprender?</h2>
+          <h2>¿Querés capacitarte o necesitás un trabajo de herrería?</h2>
           <p>
-            No importa tu edad ni tu experiencia. Acá vas a encontrar un oficio, una comunidad
-            y alguien que te va a dar una mano. Escribinos hoy y empezá a construir tu futuro.
+            Dos servicios, un mismo WhatsApp. Escribinos y te respondemos a la brevedad.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a
@@ -129,14 +166,20 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp"
-              style={{ fontSize: '1.2rem', padding: '1.2rem 3rem' }}
+              style={{ fontSize: '1.1rem', padding: '1.2rem 2.5rem' }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-1.102-1.025-1.847-2.29-2.063-2.677-.216-.387-.023-.597.163-.79.167-.173.373-.447.56-.671.187-.223.249-.387.373-.645.125-.258.063-.483-.03-.675-.092-.193-.67-1.612-.918-2.208-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.199 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.87.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Quiero capacitarme — escribime ahora
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-1.102-1.025-1.847-2.29-2.063-2.677-.216-.387-.023-.597.163-.79.167-.173.373-.447.56-.671.187-.223.249-.387.373-.645.125-.258.063-.483-.03-.675-.092-.193-.67-1.612-.918-2.208-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.199 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.87.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Quiero capacitarme
             </a>
-            <a href="/courses" className="btn btn-gold" style={{ fontSize: '1.1rem', padding: '1.2rem 2.5rem' }}>
-              Ver talleres disponibles
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <a
+              href="https://wa.me/543425428160?text=Hola%2C%20quiero%20cotizar%20un%20trabajo%20de%20herrer%C3%ADa."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-gold"
+              style={{ fontSize: '1.1rem', padding: '1.2rem 2.5rem' }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Cotizar trabajo de herrería
             </a>
           </div>
         </div>
