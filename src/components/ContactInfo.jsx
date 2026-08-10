@@ -19,7 +19,7 @@ function LazyMap() {
     <div ref={ref} className="map-container" style={{ minHeight: 350, background: 'var(--bg-warm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-light)', fontSize: '0.85rem' }}>
       {visible ? (
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.7!2d-60.713!3d-31.625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9a8e2e8e8e9%3A0x0!2zMzHCsDM3JzMwLjAiUyA2MMKwNDInNDcuMCJX!5e0!3m2!1ses!2sar!4v1"
+          src="https://maps.google.com/maps?q=A.C.M.A.R.%20Asociacion%20Civil%20Monse%C3%B1or%20Antonio%20Rodriguez,-31.5677393,-60.7309482&z=17&output=embed"
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
