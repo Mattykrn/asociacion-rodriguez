@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 audit-report.json
 .env
+
+# Fotos fuente (solo locales, no se suben)
+Fotos_iPad/
+JULES_REPORT.md
