@@ -12,6 +12,7 @@ const HERRERIA_JOBS = [
   { title: 'Trabajo 7', date: 'Enero 2021', from: 52, count: 3 },
   { title: 'Trabajo 8', date: 'Septiembre 2021', from: 55, count: 5 },
   { title: 'Trabajo 9', date: 'Diciembre 2021', from: 60, count: 3 },
+  { title: 'Trabajo 10', date: 'Selección', from: 63, count: 19 },
 ]
 
 // Para reactivar una categoría cuando se carguen sus fotos:
@@ -28,7 +29,7 @@ const CATEGORIES = [
   {
     name: 'aire-acondicionado',
     label: 'Aire Acondicionado',
-    count: 0,
+    count: 1,
   },
   {
     name: 'apoyo-escolar',
@@ -48,7 +49,7 @@ const CATEGORIES = [
   {
     name: 'institucional',
     label: 'Actividades institucionales',
-    count: 0,
+    count: 5,
   },
 ]
 
@@ -101,9 +102,18 @@ function GalleryItem({ item, loaded, onLoad }) {
   )
 }
 
+const VER_MAS_LIMIT = 6
+
 export default function Gallery({ showTitle = true }) {
   const [loaded, setLoaded] = useState({})
+  const [expanded, setExpanded] = useState({})
   const onLoad = src => setLoaded(p => ({ ...p, [src]: true }))
+  const toggle = name => setExpanded(p => ({ ...p, [name]: !p[name] }))
+
+  const cats = GROUPS.map(cat => ({
+    ...cat,
+    allItems: cat.groups.flatMap(g => g.items),
+  }))
 
   return (
     <section className="section">
@@ -118,23 +128,32 @@ export default function Gallery({ showTitle = true }) {
             </p>
           </div>
         )}
-        {GROUPS.map(cat => (
-          <div key={cat.name} style={{ marginBottom: '3rem' }}>
-            <h3 className="section-title" style={{ fontSize: '1.5rem', marginBottom: '1.75rem' }}>
-              {cat.label}
-            </h3>
-            {cat.groups.map(group => (
-              <div key={group.title} style={{ marginBottom: '2.25rem' }}>
-                <div className="tag" style={{ marginBottom: '1rem' }}>{group.title}</div>
-                <div className="gallery-grid">
-                  {group.items.map(item => (
-                    <GalleryItem key={item.src} item={item} loaded={loaded} onLoad={() => onLoad(item.src)} />
-                  ))}
-                </div>
+        {cats.map(cat => {
+          const visible = expanded[cat.name]
+            ? cat.allItems
+            : cat.allItems.slice(0, VER_MAS_LIMIT)
+          return (
+            <div key={cat.name} style={{ marginBottom: '3rem' }}>
+              <h3 className="section-title" style={{ fontSize: '1.5rem', marginBottom: '1.75rem' }}>
+                {cat.label}
+              </h3>
+              <div className="gallery-grid">
+                {visible.map(item => (
+                  <GalleryItem key={item.src} item={item} loaded={loaded} onLoad={() => onLoad(item.src)} />
+                ))}
               </div>
-            ))}
-          </div>
-        ))}
+              {cat.allItems.length > VER_MAS_LIMIT && (
+                <button
+                  type="button"
+                  className="ver-mas-btn"
+                  onClick={() => toggle(cat.name)}
+                >
+                  {expanded[cat.name] ? 'Ver menos' : `Ver más (${cat.allItems.length - VER_MAS_LIMIT})`}
+                </button>
+              )}
+            </div>
+          )
+        })}
       </div>
     </section>
   )
