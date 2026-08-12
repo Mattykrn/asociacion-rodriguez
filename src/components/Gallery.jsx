@@ -13,6 +13,7 @@ const HERRERIA_JOBS = [
   { title: 'Trabajo 8', date: 'Septiembre 2021', from: 55, count: 5 },
   { title: 'Trabajo 9', date: 'Diciembre 2021', from: 60, count: 3 },
   { title: 'Trabajo 10', date: 'Selección', from: 63, count: 19 },
+  { title: 'Trabajo 11', date: 'Selección manual', from: 82, count: 24 },
 ]
 
 // Para reactivar una categoría cuando se carguen sus fotos:
@@ -49,7 +50,7 @@ const CATEGORIES = [
   {
     name: 'institucional',
     label: 'Actividades institucionales',
-    count: 5,
+    count: 6,
   },
 ]
 
