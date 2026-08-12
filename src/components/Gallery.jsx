@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 // Trabajos de herrería: cada entrada es una sesión de fotos de un encargo
 // (todas las tomas de ese trabajo, renombradas herreria-N.jpg en orden).
@@ -78,36 +78,22 @@ function buildGroups() {
 
 const GROUPS = buildGroups()
 
-function GalleryItem({ item, loaded, onLoad }) {
-  const imgRef = useRef(null)
-  const isLoaded = loaded[item.src]
-
-  useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) {
-      onLoad()
-    }
-  }, [])
-
+function GalleryItem({ item }) {
   return (
     <div className="gallery-item">
-      {!isLoaded && (
-        <div className="gallery-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <polyline points="21 15 16 10 5 21" />
-          </svg>
-          <span>{item.label}</span>
-        </div>
-      )}
+      <div className="gallery-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <polyline points="21 15 16 10 5 21" />
+        </svg>
+        <span>{item.label}</span>
+      </div>
       <img
-        ref={imgRef}
         src={item.src}
         alt={item.label}
         loading="lazy"
-        onLoad={onLoad}
         onError={e => { e.target.style.display = 'none' }}
-        className={isLoaded ? 'gallery-img-loaded' : ''}
       />
       <div className="overlay"><span>{item.label}</span></div>
     </div>
@@ -117,9 +103,7 @@ function GalleryItem({ item, loaded, onLoad }) {
 const VER_MAS_LIMIT = 6
 
 export default function Gallery({ showTitle = true }) {
-  const [loaded, setLoaded] = useState({})
   const [expanded, setExpanded] = useState({})
-  const onLoad = src => setLoaded(p => ({ ...p, [src]: true }))
   const toggle = name => setExpanded(p => ({ ...p, [name]: !p[name] }))
 
   const cats = GROUPS.map(cat => ({
@@ -151,7 +135,7 @@ export default function Gallery({ showTitle = true }) {
               </h3>
               <div className="gallery-grid">
                 {visible.map(item => (
-                  <GalleryItem key={item.src} item={item} loaded={loaded} onLoad={() => onLoad(item.src)} />
+                  <GalleryItem key={item.src} item={item} />
                 ))}
               </div>
               {cat.allItems.length > VER_MAS_LIMIT && (
