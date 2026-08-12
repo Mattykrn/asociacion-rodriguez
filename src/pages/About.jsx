@@ -46,11 +46,11 @@ export default function About() {
             </div>
             <div>
               <div className="card" style={{ height: '100%' }}>
-                <div className="about-image-placeholder">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                </div>
+                <img
+                  src="/assets/images/about.jpg"
+                  alt="Trabajo de herrería de la Asociación Civil Monseñor Antonio Rodríguez"
+                  style={{ width: '100%', aspectRatio: '16 / 10', objectFit: 'cover', borderRadius: 'var(--radius)', marginBottom: '1.5rem', border: '1px solid var(--border)' }}
+                />
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', fontStyle: 'italic', textAlign: 'center' }}>
                   "Cada persona que sale adelante es una victoria de toda la comunidad."
                 </p>
