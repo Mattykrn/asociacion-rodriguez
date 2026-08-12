@@ -14,6 +14,7 @@ const HERRERIA_JOBS = [
   { title: 'Trabajo 9', date: 'Diciembre 2021', from: 60, count: 3 },
   { title: 'Trabajo 10', date: 'Selección', from: 63, count: 19 },
   { title: 'Trabajo 11', date: 'Selección manual', from: 82, count: 24 },
+  { title: 'Trabajo 12', date: 'Selección', from: 106, count: 7 },
 ]
 
 // Para reactivar una categoría cuando se carguen sus fotos:
@@ -30,7 +31,7 @@ const CATEGORIES = [
   {
     name: 'aire-acondicionado',
     label: 'Aire Acondicionado',
-    count: 1,
+    count: 0,
   },
   {
     name: 'apoyo-escolar',
@@ -50,7 +51,7 @@ const CATEGORIES = [
   {
     name: 'institucional',
     label: 'Actividades institucionales',
-    count: 6,
+    count: 0,
   },
 ]
 
