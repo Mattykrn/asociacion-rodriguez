@@ -78,9 +78,10 @@ function buildGroups() {
 const GROUPS = buildGroups()
 
 function GalleryItem({ item, loaded, onLoad }) {
+  const isLoaded = loaded[item.src]
   return (
     <div className="gallery-item">
-      {!loaded[item.src] && (
+      {!isLoaded && (
         <div className="gallery-placeholder">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -96,7 +97,7 @@ function GalleryItem({ item, loaded, onLoad }) {
         loading="lazy"
         onLoad={onLoad}
         onError={e => { e.target.style.display = 'none' }}
-        style={{ display: loaded[item.src] ? 'block' : 'none' }}
+        className={isLoaded ? 'gallery-img-loaded' : ''}
       />
       <div className="overlay"><span>{item.label}</span></div>
     </div>
