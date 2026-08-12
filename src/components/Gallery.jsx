@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Trabajos de herrería: cada entrada es una sesión de fotos de un encargo
 // (todas las tomas de ese trabajo, renombradas herreria-N.jpg en orden).
@@ -79,7 +79,15 @@ function buildGroups() {
 const GROUPS = buildGroups()
 
 function GalleryItem({ item, loaded, onLoad }) {
+  const imgRef = useRef(null)
   const isLoaded = loaded[item.src]
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      onLoad()
+    }
+  }, [])
+
   return (
     <div className="gallery-item">
       {!isLoaded && (
@@ -93,6 +101,7 @@ function GalleryItem({ item, loaded, onLoad }) {
         </div>
       )}
       <img
+        ref={imgRef}
         src={item.src}
         alt={item.label}
         loading="lazy"
