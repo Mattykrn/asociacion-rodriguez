@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 // Categorías de la galería.
 // Para agregar fotos: subí imágenes a public/assets/images/gallery/{name}/
@@ -7,7 +7,7 @@ const CATEGORIES = [
   {
     name: 'herreria',
     label: 'Herrería y Soldadura',
-    count: 25,
+    count: 24,
   },
   {
     name: 'aire-acondicionado',
@@ -48,12 +48,69 @@ function buildItems() {
 }
 
 const GALLERY_DATA = buildItems()
+const ALL_ITEMS = GALLERY_DATA.flatMap(c => c.items)
 
+/* ── Lightbox ── */
+function Lightbox({ item, onClose, onPrev, onNext }) {
+  // Close on Escape, navigate with arrows
+  useEffect(() => {
+    const handler = e => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') onPrev()
+      if (e.key === 'ArrowRight') onNext()
+    }
+    window.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', handler)
+      document.body.style.overflow = ''
+    }
+  }, [onClose, onPrev, onNext])
+
+  return (
+    <div className="lightbox-backdrop" onClick={onClose}>
+      <button className="lightbox-close" onClick={onClose} aria-label="Cerrar">✕</button>
+
+      <button
+        className="lightbox-nav lightbox-prev"
+        onClick={e => { e.stopPropagation(); onPrev() }}
+        aria-label="Anterior"
+      >
+        ‹
+      </button>
+
+      <div className="lightbox-content" onClick={e => e.stopPropagation()}>
+        <img src={item.src} alt={item.label} />
+        <p className="lightbox-caption">{item.label}</p>
+      </div>
+
+      <button
+        className="lightbox-nav lightbox-next"
+        onClick={e => { e.stopPropagation(); onNext() }}
+        aria-label="Siguiente"
+      >
+        ›
+      </button>
+    </div>
+  )
+}
+
+/* ── Gallery ── */
 const VER_MAS_LIMIT = 6
 
 export default function Gallery({ showTitle = true }) {
   const [expanded, setExpanded] = useState({})
+  const [lightboxIdx, setLightboxIdx] = useState(null)
+
   const toggle = name => setExpanded(p => ({ ...p, [name]: !p[name] }))
+
+  const openLightbox = src => {
+    const idx = ALL_ITEMS.findIndex(i => i.src === src)
+    if (idx !== -1) setLightboxIdx(idx)
+  }
+  const closeLightbox = useCallback(() => setLightboxIdx(null), [])
+  const goPrev = useCallback(() => setLightboxIdx(i => (i - 1 + ALL_ITEMS.length) % ALL_ITEMS.length), [])
+  const goNext = useCallback(() => setLightboxIdx(i => (i + 1) % ALL_ITEMS.length), [])
 
   return (
     <section className="section">
@@ -79,7 +136,11 @@ export default function Gallery({ showTitle = true }) {
               </h3>
               <div className="gallery-grid">
                 {visible.map(item => (
-                  <div className="gallery-item" key={item.src}>
+                  <div
+                    className="gallery-item"
+                    key={item.src}
+                    onClick={() => openLightbox(item.src)}
+                  >
                     <img
                       src={item.src}
                       alt={item.label}
@@ -103,6 +164,15 @@ export default function Gallery({ showTitle = true }) {
           )
         })}
       </div>
+
+      {lightboxIdx !== null && (
+        <Lightbox
+          item={ALL_ITEMS[lightboxIdx]}
+          onClose={closeLightbox}
+          onPrev={goPrev}
+          onNext={goNext}
+        />
+      )}
     </section>
   )
 }
