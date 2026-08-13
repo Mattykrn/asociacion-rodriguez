@@ -24,7 +24,7 @@ export default function Courses() {
             </p>
           </div>
           <div className="grid-3">
-            {coursesData.map(course => (
+            {coursesData.filter(course => course.active !== false).map(course => (
               <CourseCard
                 key={course.id}
                 course={course}

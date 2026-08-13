@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function RegistrationForm({ course, onClose: _onClose }) {
+export default function RegistrationForm({ course }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [error, setError] = useState('')
 

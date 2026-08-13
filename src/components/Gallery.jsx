@@ -56,7 +56,7 @@ const CATEGORIES = [
 ]
 
 function buildGroups() {
-  return CATEGORIES.filter(({ count, jobs }) => (jobs || count) > 0).map(cat => {
+  return CATEGORIES.filter(({ count, jobs }) => (jobs ? jobs.length : count) > 0).map(cat => {
     const groups = cat.jobs
       ? cat.jobs.map(job => ({
           title: `${job.title} · ${job.date}`,

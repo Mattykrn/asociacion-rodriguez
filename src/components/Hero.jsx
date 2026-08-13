@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -29,17 +31,17 @@ export default function Hero() {
               </svg>
               Quiero capacitarme
             </a>
-            <a href="/herreria" className="btn btn-outline">
+            <Link to="/herreria" className="btn btn-outline">
               Cotizar herrería
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
               </svg>
-            </a>
+            </Link>
           </div>
           <div style={{ marginTop: '1rem' }}>
-            <a href="/courses" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', textDecoration: 'underline' }}>
+            <Link to="/courses" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', textDecoration: 'underline' }}>
               Ver talleres disponibles →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
