@@ -78,22 +78,26 @@ function buildGroups() {
 
 const GROUPS = buildGroups()
 
-function GalleryItem({ item }) {
+function GalleryItem({ item, loaded, onLoad }) {
   return (
     <div className="gallery-item">
-      <div className="gallery-placeholder">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <polyline points="21 15 16 10 5 21" />
-        </svg>
-        <span>{item.label}</span>
-      </div>
+      {!loaded[item.src] && (
+        <div className="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          <span>{item.label}</span>
+        </div>
+      )}
       <img
         src={item.src}
         alt={item.label}
         loading="lazy"
+        onLoad={onLoad}
         onError={e => { e.target.style.display = 'none' }}
+        style={{ display: loaded[item.src] ? 'block' : 'none' }}
       />
       <div className="overlay"><span>{item.label}</span></div>
     </div>
@@ -103,7 +107,9 @@ function GalleryItem({ item }) {
 const VER_MAS_LIMIT = 6
 
 export default function Gallery({ showTitle = true }) {
+  const [loaded, setLoaded] = useState({})
   const [expanded, setExpanded] = useState({})
+  const onLoad = src => setLoaded(p => ({ ...p, [src]: true }))
   const toggle = name => setExpanded(p => ({ ...p, [name]: !p[name] }))
 
   const cats = GROUPS.map(cat => ({
@@ -135,7 +141,7 @@ export default function Gallery({ showTitle = true }) {
               </h3>
               <div className="gallery-grid">
                 {visible.map(item => (
-                  <GalleryItem key={item.src} item={item} />
+                  <GalleryItem key={item.src} item={item} loaded={loaded} onLoad={() => onLoad(item.src)} />
                 ))}
               </div>
               {cat.allItems.length > VER_MAS_LIMIT && (
